@@ -29,7 +29,7 @@ module Guard
         UI.error "Another instance of Sinatra is running."
         false
       else
-        @pid = Spoon.spawnp('rackup')
+        @pid = Spoon.spawnp(*(%W{ rackup -o #{@options[:host]} -p #{@options[:port]} }))
         @pid
       end
       wait_for_port
